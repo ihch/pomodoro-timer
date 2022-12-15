@@ -1,8 +1,8 @@
 import { useReducer, useState } from 'react';
-import { CountdownCircleTimer, Props as CountdownCircleTimerProps } from 'react-countdown-circle-timer';
+import { ColorFormat, CountdownCircleTimer, Props as CountdownCircleTimerProps } from 'react-countdown-circle-timer';
 import styles from './App.module.scss'
 
-const CountdownTimer: React.FC<CountdownCircleTimerProps & { key?: string }> = ({ isPlaying, duration, colors = '#433443', onComplete, key }) => {
+const CountdownTimer: React.FC<Omit<CountdownCircleTimerProps, 'colors'> & { key?: string, colors: ColorFormat; }> = ({ isPlaying, duration, colors = '#433443', onComplete, key }) => {
   return (
     <CountdownCircleTimer isPlaying={isPlaying} duration={duration} colors={colors} onComplete={onComplete} key={key}>
       {({ remainingTime }) => `${Math.floor(remainingTime / 60)}:${remainingTime % 60}`}
